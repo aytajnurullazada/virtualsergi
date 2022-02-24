@@ -1,0 +1,174 @@
+﻿<krpano version="1.19" title="">
+
+	<include url="skin/vtourskin.xml" />
+<autorotate enabled="true"/>                                                       
+<include url="skin/popupimage/popupimage.xml"/>
+<style name="show_image" url="icon.png" onclick="popupimage.show(get(linkedimage));"/>
+	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+	<skin_settings maps="false"
+	               maps_type="google"
+	               maps_bing_api_key=""
+	               maps_google_api_key=""
+	               maps_zoombuttons="false"
+	               gyro="true"
+	               webvr="true"
+	               webvr_gyro_keeplookingdirection="false"
+	               webvr_prev_next_hotspots="true"
+	               littleplanetintro="false"
+	               title="true"
+	               thumbs="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_buttons="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               deeplinking="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+	               loadingtext="loading..."
+	               layout_width="100%"
+	               layout_maxwidth="814"
+	               controlbar_width="-24"
+	               controlbar_height="40"
+	               controlbar_offset="20"
+	               controlbar_offset_closed="-40"
+	               controlbar_overlap.no-fractionalscaling="10"
+	               controlbar_overlap.fractionalscaling="0"
+	               design_skin_images="vtourskin.png"
+	               design_bgcolor="0x2D3E50"
+	               design_bgalpha="0.8"
+	               design_bgborder="0"
+	               design_bgroundedge="1"
+	               design_bgshadow="0 4 10 0x000000 0.3"
+	               design_thumbborder_bgborder="3 0xFFFFFF 1.0"
+	               design_thumbborder_padding="2"
+	               design_thumbborder_bgroundedge="0"
+	               design_text_css="color:#FFFFFF; font-family:Arial;"
+	               design_text_shadow="1"
+	               />
+
+	<!--
+	    For an alternative skin design either change the <skin_settings> values 
+	    from above or optionally include one of the predefined designs from below.
+	-->
+	<!-- <include url="skin/vtourskin_design_flat_light.xml"  /> -->
+	<!-- <include url="skin/vtourskin_design_glass.xml"       /> -->
+	<!-- <include url="skin/vtourskin_design_ultra_light.xml" /> -->
+	<!-- <include url="skin/vtourskin_design_117.xml"         /> -->
+	<!-- <include url="skin/vtourskin_design_117round.xml"    /> -->
+	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
+
+
+	<!-- startup action - load the first scene -->
+	<action name="startup" autorun="onstart">
+		if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+		loadscene(get(startscene), null, MERGE);
+		if(startactions !== null, startactions() );
+	</action>
+
+
+	
+	<scene name="scene_IMG_5816_Panorama" title="" onstart="" thumburl="panos/IMG_5816_Panorama.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="89.134" vlookat="-17.840" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/IMG_5816_Panorama.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/IMG_5816_Panorama.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="87.932" atv="-13.051" linkedscene="scene_room1" />
+
+	</scene>
+
+	<scene name="scene_room1" title="" onstart="" thumburl="panos/room1.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="533.211" vlookat="-16.455" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/room1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/room1.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle" ath="-0.013" atv="2.466" linkedscene="scene_img_5816_panorama" />
+		<hotspot name="spot2" style="skin_hotspotstyle|show_image" ath="-14.903" atv="-20.538" linkedimage="images/1.jpg" />
+		
+		<hotspot name="spot4" style="skin_hotspotstyle|show_image" ath="95.576" atv="7.683" linkedimage="images/3.jpg" />
+		<hotspot name="spot5" style="skin_hotspotstyle|show_image" ath="38.199" atv="6.786" linkedimage="images/4.jpg" />
+		<hotspot name="spot6" style="skin_hotspotstyle|show_image" ath="94.937" atv="-23.320" linkedimage="images/5.jpg" />
+		<hotspot name="spot7" style="skin_hotspotstyle|show_image" ath="-50.761" atv="14.599" linkedimage="images/6.jpg" />
+		<hotspot name="spot8" style="skin_hotspotstyle|show_image" ath="-103.045" atv="12.227" linkedimage="images/7.jpg" />
+		<hotspot name="spot9" style="skin_hotspotstyle|show_image" ath="78.893" atv="5.056" linkedimage="images/8.jpg" />
+		<hotspot name="spot10" style="skin_hotspotstyle|show_image" ath="128.949" atv="-36.883" linkedimage="images/9.jpg" />
+		<hotspot name="spot11" style="skin_hotspotstyle|show_image" ath="48.535" atv="-20.636" linkedimage="images/10.jpg" />
+		
+		<hotspot name="spot13" style="skin_hotspotstyle|show_image" ath="-102.581" atv="-4.742" linkedimage="images/12.jpg" />
+		<hotspot name="spot14" style="skin_hotspotstyle|show_image" ath="-82.915" atv="-1.102" linkedimage="images/13.jpg" />
+		
+		<hotspot name="spot16" style="skin_hotspotstyle|show_image" ath="49.378" atv="7.086" linkedimage="images/15.jpg" />
+		<hotspot name="spot17" style="skin_hotspotstyle|show_image" ath="12.953" atv="-21.153" linkedimage="images/16.jpg" />
+		<hotspot name="spot18" style="skin_hotspotstyle|show_image" ath="95.053" atv="-10.536" linkedimage="images/17.jpg" />
+		
+		<hotspot name="spot20" style="skin_hotspotstyle|show_image" ath="77.714" atv="-27.286" linkedimage="images/19.jpg" />
+		<hotspot name="spot21" style="skin_hotspotstyle|show_image" ath="37.130" atv="-22.458" linkedimage="images/20.jpg" />
+		<hotspot name="spot22" style="skin_hotspotstyle|show_image" ath="78.065" atv="-8.072" linkedimage="images/21.jpg" />
+		<hotspot name="spot23" style="skin_hotspotstyle|show_image" ath="-0.934" atv="-20.388" linkedimage="images/22.jpg" />
+		<hotspot name="spot24" style="skin_hotspotstyle|show_image" ath="-83.918" atv="12.563" linkedimage="images/23.jpg" />
+		
+		
+		<hotspot name="spot27" style="skin_hotspotstyle|show_image" ath="48.231" atv="-8.154" linkedimage="images/26.jpg" />
+		<hotspot name="spot3" style="skin_hotspotstyle|show_image"  ath="-136.256" atv="6.851" linkedimage="images/27.jpg" />
+		<hotspot name="spot12" style="skin_hotspotstyle|show_image"  ath="-122.891" atv="13.554" linkedimage="images/28.jpg" />
+		<hotspot name="spot15" style="skin_hotspotstyle|show_image"  ath="-64.552" atv="12.383" linkedimage="images/29.jpg" />
+		<hotspot name="spot19" style="skin_hotspotstyle|show_image"  ath="-64.642" atv="-5.739" linkedimage="images/30.jpg" />
+		<hotspot name="spot25" style="skin_hotspotstyle|show_image"  ath="-25.886" atv="4.138" linkedimage="images/31.jpg" />
+		<hotspot name="spot26" style="skin_hotspotstyle|show_image"  ath="-146.196" atv="6.756" linkedimage="images/32.jpg" />
+		<hotspot name="spot28" style="skin_hotspotstyle|show_image"  ath="25.516" atv="-16.501" linkedimage="images/33.jpg" />
+		<hotspot name="spot29" style="skin_hotspotstyle|show_image"  ath="109.948" atv="-7.150" linkedimage="images/34.jpg" />
+		<hotspot name="spot30" style="skin_hotspotstyle|show_image"  ath="-63.771" atv="-23.012" linkedimage="images/35.jpg" />
+		<hotspot name="spot31" style="skin_hotspotstyle|show_image"  ath="-145.921" atv="-9.225" linkedimage="images/36.jpg" />
+		<hotspot name="spot32" style="skin_hotspotstyle|show_image"  ath="-139.213" atv="-25.618" linkedimage="images/37.jpg" />
+		<hotspot name="spot33" style="skin_hotspotstyle|show_image"  ath="-25.937" atv="-15.887" linkedimage="images/38.jpg" />
+		<hotspot name="spot34" style="skin_hotspotstyle|show_image"  ath="62.028" atv="-21.349" linkedimage="images/39.jpg" />
+		<hotspot name="spot35" style="skin_hotspotstyle|show_image"  ath="109.768" atv="8.690" linkedimage="images/40.jpg" />
+		<hotspot name="spot36" style="skin_hotspotstyle|show_image"  ath="-102.260" atv="-26.732" linkedimage="images/41.jpg" />
+		<hotspot name="spot37" style="skin_hotspotstyle|show_image"  ath="-120.934" atv="-25.756" linkedimage="images/42.jpg" />
+		
+		<hotspot name="spot39" style="skin_hotspotstyle|show_image"  ath="25.958" atv="2.357" linkedimage="images/44.jpg" />
+		<hotspot name="spot40" style="skin_hotspotstyle|show_image"  ath="-135.637" atv="-8.599" linkedimage="images/45.jpg" />
+		<hotspot name="spot41" style="skin_hotspotstyle|show_image"  ath="110.923" atv="-24.359" linkedimage="images/46.jpg" />
+		
+		<hotspot name="spot43" style="skin_hotspotstyle|show_image"  ath="136.263" atv="-17.006" linkedimage="images/48.jpg" />
+		<hotspot name="spot44" style="skin_hotspotstyle|show_image"  ath="-177.939" atv="8.149" linkedimage="images/49.jpg" />
+		<hotspot name="spot45" style="skin_hotspotstyle|show_image"  ath="-38.665" atv="15.395" linkedimage="images/50.jpg" />
+		<hotspot name="spot46" style="skin_hotspotstyle|show_image"  ath="-51.170" atv="-5.382" linkedimage="images/51.jpg" />
+		<hotspot name="spot47" style="skin_hotspotstyle|show_image"  ath="-161.198" atv="-21.454" linkedimage="images/52.jpg" />
+		<hotspot name="spot48" style="skin_hotspotstyle|show_image"  ath="-179.024" atv="-17.335" linkedimage="images/53.jpg" />
+		<hotspot name="spot49" style="skin_hotspotstyle|show_image"  ath="162.545" atv="6.584" linkedimage="images/54.jpg" />
+		<hotspot name="spot50" style="skin_hotspotstyle|show_image"  ath="164.723" atv="-33.791" linkedimage="images/55.jpg" />
+		<hotspot name="spot51" style="skin_hotspotstyle|show_image"  ath="134.789" atv="4.285" linkedimage="images/56.jpg" />
+		<hotspot name="spot52" style="skin_hotspotstyle|show_image"  ath="147.968" atv="1.615" linkedimage="images/57.jpg" />
+		<hotspot name="spot53" style="skin_hotspotstyle|show_image"  ath="-51.164" atv="-22.092" linkedimage="images/58.jpg" />
+		<hotspot name="spot54" style="skin_hotspotstyle|show_image"  ath="-176.834" atv="-30.905" linkedimage="images/59.jpg" />
+		<hotspot name="spot55" style="skin_hotspotstyle|show_image"  ath="160.519" atv="-16.724" linkedimage="images/60.jpg" />
+		<hotspot name="spot56" style="skin_hotspotstyle|show_image"  ath="123.094" atv="3.577" linkedimage="images/61.jpg" />
+		<hotspot name="spot57" style="skin_hotspotstyle|show_image" ath="123.583" atv="-16.627" linkedimage="images/62.jpg" />
+		<hotspot name="spot58" style="skin_hotspotstyle|show_image" ath="-120.623" atv="-4.839" linkedimage="images/63.jpg" />
+		<hotspot name="spot59" style="skin_hotspotstyle|show_image" ath="-40.177" atv="-22.299" linkedimage="images/64.jpg" />
+		<hotspot name="spot60" style="skin_hotspotstyle|show_image" ath="62.858" atv="-0.342" linkedimage="images/65.jpg" />
+		<hotspot name="spot61" style="skin_hotspotstyle|show_image" ath="150.150" atv="-20.355" linkedimage="images/66.jpg" />
+		
+
+	</scene>
+
+
+</krpano>

@@ -1,0 +1,114 @@
+<krpano>
+
+    <events name="___popupimage___" keep="true"
+        onresize="popupimage.resize();"
+        onmousedown="popupimage.hide();"
+        onpopupimage_show=""
+        onpopupimage_hide=""
+        onpopupimage_loaded=""
+    />
+
+    <layer name="popupimage" url="frame.png" keep="true" zorder="1000" visible="true" alpha="0"
+        align="center" x="0" y="0" width="400" height="300"
+        scale9grid="15|15|20|20"
+        onclick="popupimage.hide();"
+        onloaded="set(visible,false);"
+    >
+         <layer name="popupimage_loadingtext" url="../../plugins/textfield.swf" keep="true" 
+            align="center" x="0" y="0" 
+            width="130" height="44"
+            vcenter="true"
+            selectable="false" 
+            background="true"
+            backgroundcolor="0xcf4141"
+            borderwidth="0" roundedge="44" 
+            
+            autoalpha="true"
+            alpha="1"
+            html="[p]yüklənir...[/p]"
+            css="p {font-family:arial; font-size:18px; text-align:center; color:#FFFFFF; }"
+        />
+
+        <layer name="popupimage_close" url="close.png" keep="true"  zorder="2"
+            align="righttop" edge="center" x="7" y="7" crop="0|0|100|100" onovercrop="0|100|100|100"
+            onclick="popupimage.hide();" scale="0.5"
+        />
+        <layer name="popupimage_close" scale="1" devices="mobile"/>        
+    </layer>
+
+    <style name="popupimage" url="" keep="true" parent="popupimage" zorder="1" alpha="0"
+        align="lefttop" x="13" y="13" width="-26" height="-26" enabled="true"
+        onloaded="
+            set(layer[popupimage_loadingtext].visible,false);
+            if(popupimage.showing,
+                popupimage.resize();
+                tween(layer[popupimage_image].alpha,1,0.2,,
+                    events.dispatch(onpopupimage_show);
+                );
+                events.dispatch(onpopupimage_loaded);
+            );
+        "
+        onclick="popupimage.hide();"
+    />
+
+    <popupimage
+        com="
+            if(%3 == false, copy(layer[popupimage].url,layer[popupimage].spacerurl);, 
+                copy(layer[popupimage].url,layer[popupimage].frameurl);
+            );
+        "
+        show="
+            set(popupimage.showing,true);
+            set(layer[popupimage].width,400);
+            set(layer[popupimage].height,300);
+            set(layer[popupimage].visible,true);
+            set(layer[popupimage_loadingtext].visible,true);
+            tween(layer[popupimage].alpha,1,0.2);
+            addlayer(popupimage_image);
+            layer[popupimage_image].loadstyle(popupimage);
+            set(layer[popupimage_image].url,%1);
+        "
+        hide="
+            set(popupimage.showing,false);
+            set(layer[popupimage_loadingtext].visible,false);
+            if(layer[popupimage_image].loaded,
+                mul(popupimage.neww,layer[popupimage].width,0.6);
+                mul(popupimage.newh,layer[popupimage].height,0.6);
+            );
+            tween(layer[popupimage].alpha,0,0.3);
+            tween(layer[popupimage].width,get(popupimage.neww),0.4);
+            tween(layer[popupimage].height,get(popupimage.newh),0.4,linear,
+                removelayer(popupimage_image);
+                set(layer[popupimage].visible,false);
+                events.dispatch(onpopupimage_hide);
+            );
+        "
+        getImageFitSize="
+            mul(popupimage.maxwidth,stagewidth,%2);
+            mul(popupimage.maxheight,stageheight,%3);
+            div(popupimage.imageaspect,layer[%1].imagewidth,layer[%1].imageheight);
+            if(layer[%1].imageheight GT popupimage.maxheight, 
+                copy(popupimage.fitheight,popupimage.maxheight);
+            ,
+                copy(popupimage.fitheight,layer[%1].imageheight); 
+            );
+            mul(popupimage.fitwidth,popupimage.fitheight,popupimage.imageaspect);
+            if(popupimage.fitwidth GT popupimage.maxwidth, 
+                copy(popupimage.fitwidth,popupimage.maxwidth);
+                div(popupimage.fitheight,popupimage.fitwidth,popupimage.imageaspect); 
+            );
+        "
+        resize="
+            if(layer[popupimage_image].loaded,
+                if(layer[popupimage].visible,
+                    popupimage.getImageFitSize(popupimage_image,0.9,0.9);
+                    add(popupimage.fitwidth,26);
+                    add(popupimage.fitheight,26);
+                    tween(layer[popupimage].width,get(popupimage.fitwidth),0.2);
+                    tween(layer[popupimage].height,get(popupimage.fitheight),0.2,,events.dispatch(onpopupimage_resized););
+                );
+            );
+        "
+    />
+
+</krpano>
